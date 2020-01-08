@@ -22,74 +22,78 @@ const audiences = [
     {
         name: 'small',
         count: 11,
-        faculty: 'Slizerin',
+
     },
     {
         name: 'middle',
         count: 13,
-        faculty: 'Gryffindor',
     },
     {
         name: 'big',
         count: 16,
-        faculty: 'Pufenduy',
     },
     {
         name: 'biggest',
-        count: 20,
-        faculty: 'Kogtevran',
+        count: 21,
     },
 ]
 
+//Вывод на экран всех аудиторий
 function showAll(){
     audiences.forEach(function(item) {
         console.log(`name: ${item.name}; count: ${item.count}; faculty: ${item.faculty}` )  
     });
 }
 
-showAll();
+// showAll();
 
+//Вывод на экран аудиторий для указанного факультета
 function audiencesForFsaculty(facultyName){
-    let facultyGrup = audiences.filter(function(item){
+    let facultyGroup = audiences.filter(function(item){
         return item.faculty == facultyName;
     });
-    console.log(facultyGrup)
+    console.log(facultyGroup)
 }
 
 audiencesForFsaculty('Pufenduy');
 audiencesForFsaculty('Kogtevran');
 audiencesForFsaculty('Gryffindor');
-audiencesForFsaculty('Slizerin');
+audiencesForFsaculty('Slizerin'); 
 
+//Вывод на экран только тех аудиторий, которые подходят для переданной группы
+function suitableAudiences(countPlaces) {
+    let facultyCount = audiences.filter(function(item) {
+        return item.count >= countPlaces;
+    }); 
+    console.log(facultyCount)
+}
+suitableAudiences(20)
+suitableAudiences(15)
+suitableAudiences(12)
+suitableAudiences(10)
+
+// //сортировка аудиторий по количеству мест
 function sortAudiences(arr) {
     arr.sort(function(a, b) { 
         return a.count - b.count;
     });
     console.log(audiences)
 }
-sortAudiences(audiences);
+sortAudiences(audiences); 
 
-// function sum(name, surname) {
-//     let fullName = name + ' ' + surname;
-//     return fullName;
-// }
-// let ivanName = 'Ivan';
-// let ivanSurname = 'Ivanovich';
-// let ivanFullName = sum(ivanName,ivanSurname);
+// //сортировка аудиторий по названию (по алфавиту)
+function sortAlphabetName(arr) {
+    arr.sort(function(a, b) {
+        let nameA = a.name.toLowerCase();
+        let nameB = b.name.toLowerCase();
 
-// console.log(ivanFullName);
-
-// function greet(name, day) {
-//     console.log('привет '+ name);
-//     if (day == 'суббота'){
-//         console.log('хорошо тебе')
-//     } else {
-//         console.log('работай')
-//     }
-// }
-// greet('Егор', 'суббота')
-
-function hh(num1, num2) {
-   console.log(num1+num2);
+        if (nameA < nameB) {
+            return -1;
+        };
+        if (nameA > nameB) {
+            return 1;
+        };
+    });
+    console.log(audiences)
 }
-hh(2, 5)
+sortAlphabetName(audiences); 
