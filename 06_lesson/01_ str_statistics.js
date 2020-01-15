@@ -7,7 +7,6 @@ function statistics(str) {
     str = str.toLowerCase();
     const arr = str.split('');
     const length = arr.length;
-    const code = "a".codePointAt(0); 
 
     let numCount = 0;
     let letterCount = 0;
@@ -15,20 +14,23 @@ function statistics(str) {
 
     for (let i = 0; i < length; i++) {
         const el = arr[i];
+        const code = el.codePointAt(0);
+       
        
         if (el.trim() !== '' && !isNaN(el)) { //метод trim()-обрезает отступы у пробелов, т.к пустая строка = 0 и !isNAN принимает его за число
             numCount++;
         }
 
-        if (el.trim() !== '' && code >= 97 && code <= 122) {
+        if (el.trim() !== '' && (code >= 1040 && code <= 1103)) {
             letterCount++;
         } else {
-            simbCount++; // считает лишнее 
+            simbCount++; 
         }
     }
-    console.log(letterCount)
-    console.log(simbCount)
-    console.log(numCount)
+    
+    console.log('Количество букв:', letterCount)
+    console.log("Количество символов:", simbCount)
+    console.log("Количество цифр:", numCount)
 }
 
 
