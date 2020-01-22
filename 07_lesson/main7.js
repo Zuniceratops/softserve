@@ -45,22 +45,22 @@ let example1  = '..... -.-- .--- ..- - ...';
 let example2 = '.... . -.--   .--- ..- -.. .';
 
 function decodeMorse(str) {
-    const words = str.split("   ");
+    const words = str.split("   "); //делит предложение по словам
     const translation = [];
 
     for (let i = 0; i < words.length; i++) {
-        const letters = words[i].split(" ");
+        const letters = words[i].split(" ");//делит слова на буквы
         const word = [];
 
         for (let j = 0; j < letters.length; j++) {
-            const letter = alphabet[letters[j]];
+            const letter = alphabet[letters[j]]; //пушит результат букв обратно в слова
             word.push(letter);
         }
 
-        translation.push(word.join(''));
+        translation.push(word.join('')); //пушит слова в предложение
     }
 
     console.log(translation.join(" "));
 }
 
-decodeMorse(example2);
+decodeMorse(example1);
