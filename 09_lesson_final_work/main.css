@@ -1,0 +1,24 @@
+body {
+    background: #ff5f02;
+    height: 100hv;
+    display: flex;
+    align-items: center;
+}
+.form {
+    padding: 100px 300px;
+    margin: 0 auto;
+}
+input {
+    padding: 17px 0px;
+    font-size: 70px;
+    border: none;
+    
+}
+ul {
+    height: 80px;
+    width: 100px;
+}
+li {
+    height: 20px;
+    width: 40px;
+}
