@@ -12,8 +12,18 @@ input {
     padding: 17px 0px;
     font-size: 70px;
     border: none;
-    
 }
+.btn {
+    background: gray;
+    color: white;
+}
+.card {
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
+
+
+
 ul {
     height: 80px;
     width: 100px;

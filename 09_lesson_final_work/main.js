@@ -32,11 +32,11 @@ numBlock.addEventListener('keydown', function(event) {
 
     // Add new
     arrName.forEach(function(elem) {
-        // const li = document.createElement('li');
-        // li.innerHTML = elem.name;
+        const li = document.createElement('li');
+        li.innerHTML = elem.name;
 
-        const cardElement = createCard(elem);
-        console.log(cardElement)
+        // const cardElement = createCard(elem);
+        // console.log(cardElement)
 
         userList.appendChild(li);
     });
@@ -44,11 +44,3 @@ numBlock.addEventListener('keydown', function(event) {
 
 
 
-// const li = document.createElement('li')
-// li.classList.add('li');
-// li.innerHTML = ' ';
-
-// const body = document.body;
-// body.appendChild(li)
-
-// console.log(li)
