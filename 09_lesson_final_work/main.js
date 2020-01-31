@@ -32,17 +32,23 @@ numBlock.addEventListener('keydown', function(event) {
 
     // Add new
     arrName.forEach(function(elem) {
-        const li = document.createElement('li');
-        li.innerHTML = elem.name;
+        // const li = document.createElement('li');
+        // li.innerHTML = elem.name;
+
+        const cardElement = createCard(elem);
+        console.log(cardElement)
+
         userList.appendChild(li);
     });
-})
+});
 
-// const div = document.createElement('div')
-// div.classList.add('super');
-// div.innerHTML = 'this is div';
+
+
+// const li = document.createElement('li')
+// li.classList.add('li');
+// li.innerHTML = ' ';
 
 // const body = document.body;
-// body.appendChild(div)
+// body.appendChild(li)
 
-// console.log(div)
+// console.log(li)
