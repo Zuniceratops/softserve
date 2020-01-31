@@ -21,7 +21,11 @@ input {
     margin-right: 20px;
     margin-bottom: 20px;
 }
-
+.loading{
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
 
 
 ul {
