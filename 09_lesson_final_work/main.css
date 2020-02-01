@@ -1,22 +1,24 @@
 body {
-    background: #ff5f02;
+    background: #d1bbafbb;
     height: 100hv;
     display: flex;
     align-items: center;
 }
 .form {
-    padding: 100px 300px;
+    top: 100px;
     margin: 0 auto;
+    position: relative;
 }
 input {
-    padding: 17px 0px;
+    padding: 60px 30px;
     font-size: 70px;
     border: none;
+    border-radius: none;
 }
-.btn {
+/* .btn {
     background: gray;
     color: white;
-}
+} */
 .card {
     margin-right: 20px;
     margin-bottom: 20px;
@@ -28,7 +30,7 @@ input {
 }
 
 
-ul {
+/* ul {
     height: 80px;
     width: 100px;
 }
@@ -36,4 +38,4 @@ li {
     height: 20px;
     width: 40px;
     background-color: green;
-}
+} */

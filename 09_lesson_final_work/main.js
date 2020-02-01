@@ -87,13 +87,13 @@ const arr = [
 
 let numBlock = document.querySelector('input');
 let userList = document.querySelector('.user-list');
+let cardList = document.querySelector('#card-list');
 
 numBlock.addEventListener('input', function(event) {
-
     let value = numBlock.value;
 
     if (value === '') {
-        userList.innerHTML = '';
+        cardList.innerHTML = '';
         return;
     }
 
@@ -106,25 +106,31 @@ numBlock.addEventListener('input', function(event) {
         }
 
         return false;
-    }) 
+    })
     
     // Clear old results
-    userList.innerHTML = '';
+    cardList.innerHTML = '';
 
     // Add new
     arrName.forEach(function(elem) {
-        const li = document.createElement('li');
-        li.innerHTML = elem.login;
-
-        // const cardElement = document.createCard(elem);
-        // console.log(cardElement)
-        
-        userList.appendChild(li);
+        const card = createCard(elem);
+        cardList.appendChild(card);
     });
-    const cardElement = document.createCard(elem);
-
-
-
-
-
 });
+
+// Users cards
+function createCard(data) {
+    const card = document.createElement('div');
+    card.style.width = '20rem';
+    card.classList.add('card');
+
+    card.innerHTML = `
+        <img class="card-img-top" src="${data.avatar_url}" alt="${data.login}">
+        <div class="card-body">
+            <h5 class="card-title">${data.login}</h5>
+            <a target="_blank" href="${data.html_url}" class="btn btn-primary">
+                Go to Github profile
+            </a>
+        </div>`;
+    return card;
+}
