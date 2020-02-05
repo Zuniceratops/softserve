@@ -1,40 +1,46 @@
 let numBlock = document.querySelector('input');
 let cardList = document.querySelector('#card-list');
+let timerId = null;
 
+numBlock.addEventListener('input', function(event) {
+  if(timerId) {
+    clearTimeout(timerId);
+  };
 
-numBlock.addEventListener('input', async function(event) {
-    let value = numBlock.value;
+  let value = numBlock.value;
 
     if (value === '') {
         cardList.innerHTML = '';
         return;
     }
 
+    timerId = setTimeout(async function() {
     // асинхронный запрос
-    const response = await fetch(`https://api.github.com/search/users?q=${value}`);
-    const data = await response.json();
-  
-
-    let arrName = data.items.filter(function(elem) {
-      let name = elem.login.toLowerCase();
-      let index = name.indexOf(value);
-
-      if (index >= 0) {
-          return true;
-      }
-
-      return false;
-    })
+      const response = await fetch(`https://api.github.com/search/users?q=${value}`);
+      const data = await response.json();
     
-    // Clear old results
-    cardList.innerHTML = '';
+      let arrName = data.items.filter(function(elem) {
+        let name = elem.login.toLowerCase();
+        let index = name.indexOf(value);
 
-    // Add new users cards
-    arrName.forEach(function(elem) {
-        const card = createCard(elem);
-        cardList.appendChild(card);
-    });
+          if (index >= 0) {
+              return true;
+          }
+
+          return false;
+        })
+        
+      // Clear old results
+      cardList.innerHTML = '';
+
+      // Add new users cards
+      arrName.forEach(function(elem) {
+          const card = createCard(elem);
+          cardList.appendChild(card);
+      });
+    }, 400);
 });
+
 
 // Users cards
 function createCard(data) {
@@ -52,3 +58,4 @@ function createCard(data) {
         </div>`;
     return card;
 }
+
