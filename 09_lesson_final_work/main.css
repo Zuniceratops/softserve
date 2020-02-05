@@ -15,10 +15,6 @@ body {
     align-items: center;
     width: 350px;
 }
-/* .btn {
-    background: gray;
-    color: white;
-} */
 .card {
     margin: 20px;
 }
@@ -28,4 +24,21 @@ body {
     margin-top: 30px;
 }
 
+.animate {
+    /* opacity: 0;
+    transform: translateY(50px); */
+    /* animation: bounce-in-top 250ms ease-in forwards; */
+}
 
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    80% {
+        transform: translateY(-15px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
