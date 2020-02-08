@@ -1,7 +1,10 @@
 let numBlock = document.querySelector('input');
 let cardList = document.querySelector('#card-list');
+
 let spinner = document.querySelector('#spinner');
 let warning = document.querySelector('#warning');
+let success = document.querySelector('#success');
+
 let timerId = null;
 
 
@@ -23,36 +26,33 @@ numBlock.addEventListener('input', function() {
   spinner.classList.remove('d-none');
   //перехват ошибки в работающем коде
   warning.classList.add('d-none');
+  success.classList.add('d-none');
  
     timerId = setTimeout(async function() {
       // асинхронный запрос
       try {
-         const response = await fetch(`https://1api.github.com/search/users?q=${value}`);
+        const response = await fetch(`https://api.github.com/search/users?q=${value}`);
         const data = await response.json();
 
-        let arrName = data.items.filter(function(elem) {
-          let name = elem.login.toLowerCase();
-          let index = name.indexOf(value);
-
-          if (index >= 0) {
-              return true;
-          }
-
-          return false;
-        })
-          
+        //если юзер не найден
+        if(data.items.length === 0) {
+          success.classList.remove('d-none');
+          return;
+        }
+        
         // Clear old results
         cardList.innerHTML = '';
 
         // Add new users cards
-        arrName.forEach(function(elem) {
+        data.items.forEach(function(elem) {
           const card = createCard(elem);
           cardList.appendChild(card);
         });
       } catch(error) {
+        //если ошибка сервева
         warning.classList.remove('d-none');
       } finally {
-        // spinner.classList.remove('d-none');
+        spinner.classList.add('d-none');
       };
     }, 400);
 });
