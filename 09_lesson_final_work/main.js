@@ -62,7 +62,7 @@ numBlock.addEventListener('input', function() {
 function createCard(data) {
     const card = document.createElement('div');
     card.style.width = '20rem';
-    card.classList.add('card');
+    card.classList.add('card', 'animate');
 
     card.innerHTML = `
         <img class="card-img-top" src="${data.avatar_url}" alt="${data.login}">
